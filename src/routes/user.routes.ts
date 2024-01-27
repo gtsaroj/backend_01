@@ -1,11 +1,14 @@
 import { Router } from "express";
-import { upload } from "../middlewares/multer.middleware.ts";
-import { RegisterUser, LoginUser } from "../controllers/User.controller.ts";
+import { upload } from "../middlewares/multer.middleware.js";
+import { RegisterUser, LoginUser } from "../controllers/User.controller.js";
+import { app } from "../app.js";
 
-const router = Router();
+ const router = Router();
 
 router.route("/register").post(upload.single("avatar"), RegisterUser);
 router.route("/login").post(upload.none(), LoginUser);
+router.route("/route").get(() => {
+    console.log("running")
+})
 
-
-export default router;
+export default {router}

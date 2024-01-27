@@ -1,15 +1,19 @@
 import { Request, Response, NextFunction } from "express";
+
+interface CustomError extends Error {
+  code?: number;
+}
+
 export const AsyncHanlder =
-  (fn: Function) =>
-  async (req: Request, res: Response, next: NextFunction) => {
+  (fn: Function) => async (req: Request, res: Response, next: NextFunction) => {
     try {
-        await fn(req, res, next);
-        return
+      await fn(req, res, next);
+      return;
     } catch (error) {
-        res.status(error.code || 500).json({
-            status: false,
-            message: error.message || "Internal server error"
-        })
+      const customError = error as CustomError;
+      res.status(customError.code || 500).json({
+        status: false,
+        message: customError.message || "Internal server error",
+      });
     }
   };
-
