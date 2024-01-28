@@ -1,5 +1,6 @@
 import React from "react";
 import { HotelData } from "./HotelData";
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 const Card = ({ prop }: any) => {
   return (
@@ -9,7 +10,8 @@ const Card = ({ prop }: any) => {
       </div>
       <div>
         <div className=" gap-1 flex items-center justify-center">
-          * * * * * <span className="text-[12px] text-gray-500">{prop.review}</span>
+          <StarBorderIcon /> <StarBorderIcon /> <StarBorderIcon /> <StarBorderIcon />
+          <span className="text-[12px] text-gray-500">{prop.review}</span>
         </div>
         <h3 className="text-[16px] font-mono font-bold">{prop.name}</h3>
         <span className="text-[14px] text-gray-500">{prop.description}</span>

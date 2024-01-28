@@ -8,6 +8,8 @@ interface HotelDataType {
     oldRent: number;
 }
 
+
+
 // Array of HotelDataType objects
 export const HotelData: HotelDataType[] = [
     {
